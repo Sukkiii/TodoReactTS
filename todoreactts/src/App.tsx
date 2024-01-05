@@ -1,12 +1,17 @@
-// import { useState } from 'react'
-import { Box } from '@mui/material'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import MainPage from '@/pages/MainPage'
+import DetailPage from '@/pages/DetailPage'
 
 function App() {
   return (
-    <>
-      <Box>왜이래</Box>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/home' element={<Navigate replace to='' />} />
+        <Route path='/main' element={<Navigate replace to='' />} />
+        <Route path='/detail/:id' element={<DetailPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
