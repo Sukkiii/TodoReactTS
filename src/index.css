@@ -1,7 +1,58 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Apple SD Gothic Neo';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    local('Apple SD Gothic Neo Light'),
+    url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/300_AppleSDGothicNeo-Light.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/300_AppleSDGothicNeo-Light.otf')
+      format('opentype');
+}
+
+@font-face {
+  font-family: 'Apple SD Gothic Neo';
+  font-style: normal;
   font-weight: 400;
+  src:
+    local('Apple SD Gothic Neo Regular'),
+    url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/500_AppleSDGothicNeo-Regular.woff2')
+      format('woff2'),
+    url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/500_AppleSDGothicNeo-Regular.otf')
+      format('opentype');
+}
+
+* {
+  font-family:
+    'Apple SD Gothis Neo',
+    Trebuchet MS,
+    sans-serif;
+  color: #111;
+}
+
+@layer components {
+  .smooth-color {
+    @apply transition-colors duration-1000 ease-in-out;
+  }
+  .smooth-transition {
+    @apply transition-transform duration-1000 ease-in-out;
+  }
+}
+
+/* :root {
+  font-family:
+    Apple SD Gothis Neo,
+    system-ui,
+    Avenir,
+    Helvetica,
+    Arial,
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -65,4 +116,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

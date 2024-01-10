@@ -6,6 +6,16 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      width: {
+        'width-fix': '430px',
+        // Iphone 14, 15 pro base border 8px
+        // base: 430px
+      },
+      spacing: {
+        'height-fix': '932px',
+        // Iphone 14, 15 pro base border 8px
+        // base: 932px
+      },
       // text
       fontSize: {
         'size-main': ['1.5rem', '2rem'],
