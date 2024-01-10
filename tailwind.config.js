@@ -56,12 +56,12 @@ export default {
       // animation
       keyframes: {
         wiggle: {
-          '0%, 100%': { transform: 'rotate(-10deg)' },
-          '50%': { transform: 'rotate(10deg)' },
+          '0%, 100%': { transform: 'rotate(-5deg)' },
+          '50%': { transform: 'rotate(5deg)' },
         },
       },
       animation: {
-        wiggle: 'wiggle 2s ease-in-out infinite',
+        wiggle: 'wiggle 7s ease-in-out infinite',
         spinSlow: 'spin 15s linear infinite',
       },
     },
