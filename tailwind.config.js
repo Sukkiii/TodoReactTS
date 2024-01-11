@@ -10,11 +10,19 @@ export default {
         'width-fix': '430px',
         // Iphone 14, 15 pro base border 8px
         // base: 430px
+        profile: '16.19rem',
+        profileImg: '7.44rem',
+      },
+      height: {
+        profileImg: '7.44rem',
       },
       spacing: {
         'height-fix': '932px',
         // Iphone 14, 15 pro base border 8px
         // base: 932px
+        sm: '0.75rem',
+        middle: '1.25rem',
+        big: '1.5rem',
       },
       // text
       fontSize: {
@@ -33,16 +41,16 @@ export default {
       colors: {
         'main-color': '#ff98a4',
         'main-hover-color': '#FF5E70',
-        'main-light-color': '#FFBCC4',
+        'main-light-color': '#FFC7CE',
 
         // 다크모드 배경색
         'dark-main-color': '#0f172a',
-        'dark-light-color': '#cbd5e1',
+        'dark-light-color': '#818894',
 
         'sub-color': '#D9D9D9',
-        'sub-hover-color': '#9B9B9B',
+        'sub-hover-color': '#787878',
 
-        'black-color': '#111111',
+        'black-color': '#2D3E59',
         'light-gray-color': '#f2efef',
         'dark-gray-color': '#999999',
       },

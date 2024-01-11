@@ -7,17 +7,17 @@ export default function Footer() {
   return (
     <Box className='flex justify-between w-full h-20 border-t-2 border-t-gray-200'>
       <Box className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 border-r-gray-200'>
-        <HomeIcon className='fill-main-hover-color'></HomeIcon>
+        <HomeIcon className='fill-main-hover-color' />
         <Typography className='text-main-hover-color text-size-text'>
           Home
         </Typography>
       </Box>
       <Box className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 border-r-gray-200'>
-        <TodayIcon className='fill-sub-color'></TodayIcon>
+        <TodayIcon className='fill-sub-color' />
         <Typography className='text-sub-color text-size-text'>Today</Typography>
       </Box>
       <Box className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 '>
-        <AccountCircleIcon className='fill-sub-color'></AccountCircleIcon>
+        <AccountCircleIcon className='fill-sub-color' />
         <Typography className='text-sub-color text-size-text'>
           MyPage
         </Typography>

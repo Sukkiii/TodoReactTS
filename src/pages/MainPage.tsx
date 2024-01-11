@@ -1,9 +1,10 @@
-import { Box } from '@mui/material'
+import { Profile, Calendar } from '@/components/common'
 
 const MainPage = () => {
   return (
     <>
-      <Box>MainPage</Box>
+      <Profile />
+      <Calendar />
     </>
   )
 }
