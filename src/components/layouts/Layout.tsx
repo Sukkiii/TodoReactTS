@@ -1,15 +1,53 @@
 import { Box } from '@mui/system'
 import { Outlet } from 'react-router-dom'
 import { Header, Footer } from '@/components/layouts'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider, createTheme } from '@mui/material'
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ['Hahmlet', 'Trebuchet MS', 'sans-serif'].join(','),
+    fontWeightLight: 300,
+    fontWeightMedium: 500,
+    fontWeightRegular: 700,
+    fontWeightBold: 900,
+    h2: {
+      fontFamily: ['Black Han Sans', 'Trebuchet MS', 'sans-serif'].join(','),
+      fontSize: '2rem',
+      fontWeight: '400',
+    }, // Header only
+    h3: { fontSize: '1.75rem' },
+    h4: { fontSize: '1.25rem' },
+    h5: { fontSize: '1rem' },
+  },
+  palette: {
+    primary: {
+      main: '#FF98A4',
+      light: '#FFBCC4',
+      dark: '#FF5E70',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#FF5E70',
+    },
+    success: {
+      main: '#D9D9D9',
+      dark: '#9b9b9b',
+    },
+  },
+})
 
 export default function Layout() {
   return (
-    <Box className='flex flex-col m-auto my-2 rounded-md outline-slate-200 outline outline-8 w-width-fix h-height-fix'>
-      <Box className='flex-1 h-full m-4'>
-        <Header />
-        <Outlet />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box className='flex flex-col m-auto my-2 rounded-md outline-slate-200 outline outline-8 w-width-fix h-height-fix'>
+        <Box className='flex-1 h-full m-4'>
+          <Header />
+          <Outlet />
+        </Box>
         <Footer />
       </Box>
-    </Box>
+    </ThemeProvider>
   )
 }
