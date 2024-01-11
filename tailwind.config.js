@@ -18,9 +18,9 @@ export default {
       },
       // text
       fontSize: {
-        'size-main': ['1.5rem', '2rem'],
-        'size-sub': ['0.9rem', '1.3rem'],
-        'size-text': ['0.75rem', '1rem'],
+        'size-main': ['1.75rem', '2rem'],
+        'size-sub': ['1.25rem', '1.5rem'],
+        'size-text': ['1rem', '1.3rem'],
       },
       // rounded
       borderRadius: {
@@ -39,7 +39,6 @@ export default {
         'dark-main-color': '#0f172a',
         'dark-light-color': '#cbd5e1',
 
-        // 서브컬러 초록색
         'sub-color': '#D9D9D9',
         'sub-hover-color': '#9B9B9B',
 
@@ -56,12 +55,12 @@ export default {
       // animation
       keyframes: {
         wiggle: {
-          '0%, 100%': { transform: 'rotate(-10deg)' },
-          '50%': { transform: 'rotate(10deg)' },
+          '0%, 100%': { transform: 'rotate(-5deg)' },
+          '50%': { transform: 'rotate(5deg)' },
         },
       },
       animation: {
-        wiggle: 'wiggle 2s ease-in-out infinite',
+        wiggle: 'wiggle 7s ease-in-out infinite',
         spinSlow: 'spin 15s linear infinite',
       },
     },
