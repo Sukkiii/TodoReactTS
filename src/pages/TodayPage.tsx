@@ -1,9 +1,9 @@
-import { Box } from '@mui/material'
+import { Profile } from '@/components/common'
 
 const DetailPage = () => {
   return (
     <>
-      <Box>DetailPage</Box>
+      <Profile />
     </>
   )
 }

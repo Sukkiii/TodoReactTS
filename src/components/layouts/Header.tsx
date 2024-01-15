@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { Logo } from '@/assets'
 
 export default function Header() {
   return (
@@ -7,11 +8,7 @@ export default function Header() {
         Todo Diary
       </Typography>
       <Box>
-        <img
-          className='w-20 animate-wiggle'
-          src='src/assets/fightingRabbit.png'
-          alt='fighting rabbit'
-        ></img>
+        <img className='w-20 animate-wiggle' src={Logo} alt='fighting rabbit' />
       </Box>
     </Box>
   )

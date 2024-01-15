@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainPage from '@/pages/MainPage'
-import DetailPage from '@/pages/DetailPage'
+import TodayPage from '@/pages/TodayPage'
+import MyPage from './pages/MyPage'
 import { Layout } from '@/components/layouts'
 
 function App() {
@@ -9,9 +10,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path='/' element={<MainPage />} />
-          <Route path='/home' element={<Navigate replace to='' />} />
-          <Route path='/main' element={<Navigate replace to='' />} />
-          <Route path='/detail/:id' element={<DetailPage />} />
+          <Route path='/today/:id' element={<TodayPage />} />
+          <Route path='/mypage' element={<MyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
