@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
-import { Outlet } from 'react-router-dom'
-import { Header, Footer } from '@/components/layouts'
+import { Outlet, useLocation } from 'react-router-dom'
+import { Header, Footer, Profile } from '@/components/layouts'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider, createTheme } from '@mui/material'
 
@@ -38,12 +38,15 @@ const theme = createTheme({
 })
 
 export default function Layout() {
+  const location = useLocation()
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className='flex flex-col m-auto my-2 rounded-md outline-slate-200 outline outline-8 w-width-fix h-height-fix'>
         <Box className='flex-1 h-full m-4'>
           <Header />
+          {location.pathname !== '/mypage' && <Profile />}
           <Outlet />
         </Box>
         <Footer />

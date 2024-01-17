@@ -1,11 +1,5 @@
-import { Profile } from '@/components/common'
-
 const DetailPage = () => {
-  return (
-    <>
-      <Profile />
-    </>
-  )
+  return <></>
 }
 
 export default DetailPage
