@@ -48,7 +48,7 @@ export default {
         'dark-light-color': '#818894',
 
         'sub-color': '#D9D9D9',
-        'sub-hover-color': '#787878',
+        'sub-hover-color': '#8F8F8F',
 
         'black-color': '#2D3E59',
         'light-gray-color': '#f2efef',

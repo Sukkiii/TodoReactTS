@@ -1,9 +1,9 @@
-import { Box } from '@mui/material'
+import { MyPageBox } from '@/components/myPage'
 
 const MyPage = () => {
   return (
     <>
-      <Box>my page</Box>
+      <MyPageBox />
     </>
   )
 }
