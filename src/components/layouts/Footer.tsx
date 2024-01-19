@@ -29,10 +29,10 @@ export default function Footer() {
   })
 
   return (
-    <Box className='flex justify-between w-full h-20 border-t-2 border-t-gray-200'>
+    <Box className='flex justify-between w-full h-20 py-3 border-t-2 border-t-gray-200'>
       <Link
         to='/'
-        className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 cursor-pointer border-r-gray-200'
+        className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 border-opacity-50 cursor-pointer border-r-gray-200'
       >
         <HomeIcon className={`text-size-text ${getPageStyles('/').mainIcon}`} />
         <Typography className={`text-size-text ${getPageStyles('/').mainText}`}>
@@ -41,7 +41,7 @@ export default function Footer() {
       </Link>
       <Link
         to={`/today/${today}`}
-        className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 cursor-pointer border-r-gray-200'
+        className='flex flex-col flex-wrap items-center content-center justify-center w-1/3 border-r-2 border-opacity-50 cursor-pointer border-r-gray-200 '
       >
         <TodayIcon
           className={`text-size-text ${getPageStyles('/today').elseIcon}`}
