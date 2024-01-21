@@ -35,7 +35,14 @@ export default function MyPageBox() {
 
   const handleSave = () => {
     localStorage.setItem('user', JSON.stringify(user))
+
+    setTimeout(() => {
+      setIsNewUser(false)
+    }, 300)
+    // TODO: 변경이 하나도 없이 그냥 저장하기 누르면, setIsNewUser가 false가 되면 안됨.
+    // TODO: alert 창이나, 수정되었다는 문구 나오면 좋을 듯
   }
+
   return (
     <>
       <Box className='flex justify-between my-10'>
