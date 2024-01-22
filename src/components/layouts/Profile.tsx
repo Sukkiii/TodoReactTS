@@ -6,8 +6,7 @@ export default function Profile() {
   const [user, setUser] = useState({
     userImage: localStorage.getItem('userImage') || '',
     userName: localStorage.getItem('userName') || 'Default Name',
-    userIntroduce:
-      localStorage.getItem('userIntroduce') || 'No introduction available.',
+    userIntroduce: localStorage.getItem('userIntroduce') || 'No introduction.',
   })
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Profile() {
         <Typography className='text-size-sub text-main-color'>
           {user.userName}
         </Typography>
-        <Typography className='font-semibold text-size-text text-sub-hover-color'>
+        <Typography className='font-semibold whitespace-pre-line text-size-text text-sub-hover-color'>
           {user.userIntroduce}
         </Typography>
       </Box>
