@@ -56,7 +56,7 @@ export default function Calendar() {
   }
 
   return (
-    <Box className='flex flex-col w-full mt-4 gap-middle'>
+    <Box className='flex flex-col w-full gap-middle'>
       <Box className='grid grid-cols-7 justify-items-center'>
         <Typography className='col-span-3 text-size-sub text-main-hover-color'>
           {currentMonth.format('YYYY년 MM월')}

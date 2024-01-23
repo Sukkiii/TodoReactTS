@@ -17,7 +17,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <Box className='flex justify-between gap-middle'>
+    <Box className='flex justify-between mb-4 gap-middle'>
       <Box className='flex items-center justify-center overflow-hidden border-4 rounded-full w-profileImg h-profileImg border-sub-color'>
         {user.userImage ? (
           <img
