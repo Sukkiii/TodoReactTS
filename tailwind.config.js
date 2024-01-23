@@ -53,6 +53,12 @@ export default {
         'black-color': '#2D3E59',
         'light-gray-color': '#f2efef',
         'dark-gray-color': '#999999',
+
+        // clover color
+        'clover-pink': '#F38194',
+        'clover-yellow': '#F5C23A',
+        'clover-skyblue': '#91CBD9',
+        'clover-green': '#60AA25',
       },
 
       screens: {

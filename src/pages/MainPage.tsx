@@ -1,9 +1,10 @@
-import { Calendar } from '@/components/common'
+import { Calendar, Schedule } from '@/components/common'
 
 const MainPage = () => {
   return (
     <>
       <Calendar />
+      <Schedule />
     </>
   )
 }

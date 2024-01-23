@@ -1,5 +1,10 @@
+import { Schedule } from '@/components/common'
 const DetailPage = () => {
-  return <></>
+  return (
+    <>
+      <Schedule />
+    </>
+  )
 }
 
 export default DetailPage
