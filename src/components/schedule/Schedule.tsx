@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import { ClickAwayListener } from '@mui/base'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import { ScheduleList } from '@/components/schedule'
 
 export default function Schedule() {
   const [open, setOpen] = useState(false)
   const [scheduleTitle, setScheduleTitle] = useState('Schedule 1')
+  // const [scheduleList, setScheduleList] = useState()
   const [isEditing, setIsEditing] = useState(false)
 
   const handleClick = () => {
@@ -45,6 +47,8 @@ export default function Schedule() {
     }
   }
 
+  const addSchedule = () => {}
+
   useEffect(() => {
     if (!isEditing) {
       handleSave()
@@ -71,7 +75,7 @@ export default function Schedule() {
               </Typography>
             )}
             <Box className='flex items-center justify-center w-6 h-6 p-1 bg-white rounded-full'>
-              <AddIcon className='fill-dark-main-color' />
+              <AddIcon className='fill-dark-main-color' onClick={addSchedule} />
             </Box>
           </Box>
           <Box className='flex items-center justify-center my-auto cursor-pointer'>
@@ -87,6 +91,9 @@ export default function Schedule() {
               </Box>
             )}
           </Box>
+        </Box>
+        <Box>
+          <ScheduleList />
         </Box>
       </Box>
     </ClickAwayListener>
