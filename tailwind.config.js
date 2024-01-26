@@ -28,7 +28,7 @@ export default {
       fontSize: {
         'size-main': ['1.75rem', '2rem'],
         'size-sub': ['1.25rem', '1.5rem'],
-        'size-text': ['1rem', '1.3rem'],
+        'size-text': ['0.9rem', '1.3rem'],
       },
       // rounded
       borderRadius: {
@@ -59,6 +59,7 @@ export default {
         'clover-yellow': '#F5C23A',
         'clover-skyblue': '#91CBD9',
         'clover-green': '#60AA25',
+        'clover-sub': '#D9D9D9',
       },
 
       screens: {

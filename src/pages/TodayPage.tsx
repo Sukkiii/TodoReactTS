@@ -1,8 +1,8 @@
-import { Schedule } from '@/components/schedule'
+import { Schedules } from '@/components/schedule'
 const DetailPage = () => {
   return (
     <>
-      <Schedule />
+      <Schedules />
     </>
   )
 }

@@ -5,7 +5,11 @@ import { ClickAwayListener } from '@mui/base'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { ScheduleList } from '@/components/schedule'
 
-export default function Schedule() {
+interface ScheduleProps {
+  color: string
+}
+
+export default function Schedule({ color }: ScheduleProps) {
   const [open, setOpen] = useState(false)
   const [scheduleTitle, setScheduleTitle] = useState('Schedule 1')
   // const [scheduleList, setScheduleList] = useState()
@@ -57,9 +61,9 @@ export default function Schedule() {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <Box className='flex flex-col gap-middle'>
+      <Box className='flex flex-col gap-sm'>
         <Box className='flex gap-2'>
-          <Box className='flex items-center h-12 gap-2 p-2 pl-4 w-fit rounded-3xl bg-light-gray-color'>
+          <Box className='flex items-center h-10 gap-2 p-2 pl-4 w-fit rounded-3xl bg-light-gray-color'>
             {isEditing ? (
               <Input
                 autoFocus
@@ -67,10 +71,12 @@ export default function Schedule() {
                 onChange={handleInputChange}
                 onBlur={handleInputBlur}
                 onKeyPress={handleKeyEnter}
-                className='w-24 text-clover-pink'
+                className={`w-24 text-size-text text-clover-${color}`}
               />
             ) : (
-              <Typography className='w-24 text-clover-pink'>
+              <Typography
+                className={`w-24 text-size-text text-clover-${color}`}
+              >
                 {scheduleTitle}
               </Typography>
             )}
@@ -93,7 +99,7 @@ export default function Schedule() {
           </Box>
         </Box>
         <Box>
-          <ScheduleList />
+          <ScheduleList scheduleColor={color} />
         </Box>
       </Box>
     </ClickAwayListener>

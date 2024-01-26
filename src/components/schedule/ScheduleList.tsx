@@ -1,10 +1,16 @@
 import { Clovers } from '@/components/schedule'
 import { Box, Input } from '@mui/material'
 
-export default function ScheduleList() {
+interface ScheduleListProps {
+  scheduleColor: string
+}
+
+export default function ScheduleList({ scheduleColor }: ScheduleListProps) {
+  const color = [scheduleColor]
+
   return (
-    <Box className='flex h-8'>
-      <Clovers />
+    <Box className='flex'>
+      <Clovers colors={color} />
       <Input autoFocus></Input>
     </Box>
   )
