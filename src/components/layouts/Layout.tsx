@@ -44,9 +44,11 @@ export default function Layout() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box className='flex flex-col m-auto my-2 rounded-md outline-slate-200 outline outline-8 w-width-fix h-height-fix'>
-        <Box className='flex-1 h-full m-4'>
+        <Box className='m-4 mb-0'>
           <Header />
           {location.pathname !== '/mypage' && <Profile />}
+        </Box>
+        <Box className='flex-1 h-full m-4 overflow-y-auto'>
           <Outlet />
         </Box>
         <Footer />

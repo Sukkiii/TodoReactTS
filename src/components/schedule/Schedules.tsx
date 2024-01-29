@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 
 export default function Schedules() {
   return (
-    <Box className='flex flex-col gap-middle'>
+    <Box className='flex flex-col gap-sm'>
       <Schedule color='pink' />
       <Schedule color='yellow' />
       <Schedule color='skyblue' />

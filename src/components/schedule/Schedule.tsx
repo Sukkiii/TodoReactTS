@@ -9,11 +9,31 @@ interface ScheduleProps {
   color: string
 }
 
+interface ScheduleItem {
+  id: number
+  title: string
+}
+
 export default function Schedule({ color }: ScheduleProps) {
+  let value = 1
+  switch (color) {
+    case 'yellow':
+      value = 2
+      break
+    case 'skyblue':
+      value = 3
+      break
+    case 'green':
+      value = 4
+      break
+    default:
+      break
+  }
+
   const [open, setOpen] = useState(false)
-  const [scheduleTitle, setScheduleTitle] = useState('Schedule 1')
-  // const [scheduleList, setScheduleList] = useState()
+  const [scheduleTitle, setScheduleTitle] = useState(`Schedule ${value}`)
   const [isEditing, setIsEditing] = useState(false)
+  const [schedules, setSchedules] = useState<ScheduleItem[]>([])
 
   const handleClick = () => {
     setOpen((_) => !_)
@@ -51,7 +71,11 @@ export default function Schedule({ color }: ScheduleProps) {
     }
   }
 
-  const addSchedule = () => {}
+  const addSchedule = () => {
+    const newId = schedules.length + 1
+    const newSchedule = { id: newId, title: `Schedule ${newId}` }
+    setSchedules((prev) => [...prev, newSchedule])
+  }
 
   useEffect(() => {
     if (!isEditing) {
@@ -81,7 +105,10 @@ export default function Schedule({ color }: ScheduleProps) {
               </Typography>
             )}
             <Box className='flex items-center justify-center w-6 h-6 p-1 bg-white rounded-full'>
-              <AddIcon className='fill-dark-main-color' onClick={addSchedule} />
+              <AddIcon
+                className='cursor-pointer fill-dark-main-color'
+                onClick={addSchedule}
+              />
             </Box>
           </Box>
           <Box className='flex items-center justify-center my-auto cursor-pointer'>
@@ -98,8 +125,10 @@ export default function Schedule({ color }: ScheduleProps) {
             )}
           </Box>
         </Box>
-        <Box>
-          <ScheduleList scheduleColor={color} />
+        <Box className='flex flex-col gap-2'>
+          {schedules.map((schedule) => (
+            <ScheduleList key={schedule.id} scheduleColor={color} />
+          ))}
         </Box>
       </Box>
     </ClickAwayListener>
