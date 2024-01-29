@@ -43,7 +43,7 @@ export default function Clovers({ colors }: CloversProps) {
       <Box className='relative h-8 ml-2 rotate-45'>
         <FavoriteRoundedIcon
           fill={fill[1]}
-          className={`absolute top-[-3.5px] w-5 h-5 fill-clover-${fill[1]} `}
+          className={`absolute top-[-3.5px] w-5 h-5 fill-clover-${fill[1]}`}
         />
         <FavoriteRoundedIcon
           className={`absolute top-[4px] w-5 h-5 rotate-90 left-2 fill-clover-${fill[2]}`}

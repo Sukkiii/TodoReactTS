@@ -1,9 +1,10 @@
 import { Box, Typography, Input } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import { ClickAwayListener } from '@mui/base'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { ScheduleList } from '@/components/schedule'
+import dayjs from 'dayjs'
 
 interface ScheduleProps {
   color: string
@@ -15,16 +16,19 @@ interface ScheduleItem {
 }
 
 export default function Schedule({ color }: ScheduleProps) {
-  let value = 1
+  const value =
+    color === 'yellow' ? 2 : color === 'skyblue' ? 3 : color === 'green' ? 4 : 1
+
+  let colorName = 'primary'
   switch (color) {
     case 'yellow':
-      value = 2
+      colorName = 'secondary'
       break
     case 'skyblue':
-      value = 3
+      colorName = 'info'
       break
     case 'green':
-      value = 4
+      colorName = 'success'
       break
     default:
       break
@@ -50,6 +54,13 @@ export default function Schedule({ color }: ScheduleProps) {
 
   const handleSave = () => {
     setIsEditing(false)
+    localStorage.setItem(
+      dayjs().format('DDMMYY'),
+      JSON.stringify([
+        ...schedules,
+        { id: schedules.length + 1, title: scheduleTitle },
+      ]),
+    )
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,13 +86,23 @@ export default function Schedule({ color }: ScheduleProps) {
     const newId = schedules.length + 1
     const newSchedule = { id: newId, title: `Schedule ${newId}` }
     setSchedules((prev) => [...prev, newSchedule])
+    localStorage.setItem(
+      dayjs().format('DDMMYY'),
+      JSON.stringify([...schedules, newSchedule]),
+    )
   }
+  useEffect(() => {
+    const storedSchedules = localStorage.getItem(dayjs().format('DDMMYY'))
+    if (storedSchedules) {
+      setSchedules(JSON.parse(storedSchedules))
+    }
+  }, [])
 
   useEffect(() => {
     if (!isEditing) {
       handleSave()
     }
-  }, [isEditing, open])
+  }, [isEditing, open, schedules])
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -95,6 +116,9 @@ export default function Schedule({ color }: ScheduleProps) {
                 onChange={handleInputChange}
                 onBlur={handleInputBlur}
                 onKeyPress={handleKeyEnter}
+                color={
+                  colorName as 'primary' | 'secondary' | 'info' | 'success'
+                }
                 className={`w-24 text-size-text text-clover-${color}`}
               />
             ) : (
@@ -106,7 +130,7 @@ export default function Schedule({ color }: ScheduleProps) {
             )}
             <Box className='flex items-center justify-center w-6 h-6 p-1 bg-white rounded-full'>
               <AddIcon
-                className='cursor-pointer fill-dark-main-color'
+                className={`cursor-pointer fill-clover-${color}`}
                 onClick={addSchedule}
               />
             </Box>
@@ -127,7 +151,11 @@ export default function Schedule({ color }: ScheduleProps) {
         </Box>
         <Box className='flex flex-col gap-2'>
           {schedules.map((schedule) => (
-            <ScheduleList key={schedule.id} scheduleColor={color} />
+            <ScheduleList
+              key={schedule.id}
+              scheduleColor={color}
+              schedule={schedule}
+            />
           ))}
         </Box>
       </Box>
