@@ -28,11 +28,13 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     secondary: {
-      main: '#FF5E70',
+      main: '#F5C23A',
+    },
+    info: {
+      main: '#91CBD9',
     },
     success: {
-      main: '#D9D9D9',
-      dark: '#9b9b9b',
+      main: '#60AA25',
     },
   },
 })

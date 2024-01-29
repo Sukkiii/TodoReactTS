@@ -29,6 +29,7 @@ export default {
         'size-main': ['1.75rem', '2rem'],
         'size-sub': ['1.25rem', '1.5rem'],
         'size-text': ['0.9rem', '1.3rem'],
+        'size-text-sm': ['0.75rem', '1rem'],
       },
       // rounded
       borderRadius: {
