@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { Box } from '@mui/material'
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'
+import { ColorType } from '@/types'
 
-interface CloversProps {
-  colors: string[]
-}
-export default function Clovers({ colors }: CloversProps) {
+export default function Clovers({ colors = [] }: ColorType) {
   const [fill, setFill] = useState(['sub', 'sub', 'sub', 'sub'])
 
   const [isDone, setIsDone] = useState(false)

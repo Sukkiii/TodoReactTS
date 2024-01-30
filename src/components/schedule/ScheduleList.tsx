@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 interface ScheduleListProps {
   scheduleColor: string
-  schedule: { id: number; title: string }
+  schedule: { id: number; title: string; value: string }
 }
 
 export default function ScheduleList({
@@ -13,9 +13,7 @@ export default function ScheduleList({
   schedule,
 }: ScheduleListProps) {
   const [isEditing, setIsEditing] = useState(false)
-  const [scheduleName, setScheduleName] = useState<string | undefined>(
-    localStorage.getItem(dayjs().format('DDMMYY')),
-  )
+  const [scheduleValue, setScheduleValue] = useState<string>(schedule.value)
 
   let colorName = 'primary'
   switch (scheduleColor) {
@@ -36,21 +34,27 @@ export default function ScheduleList({
     setIsEditing(true)
   }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setScheduleName(e.target.value)
+    setScheduleValue(e.target.value)
   }
 
   const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleEdit()
-      localStorage.setItem(dayjs().format('DDMMYY'), scheduleName || '')
+      localStorage.setItem(
+        dayjs().format('YYMMDD'),
+        JSON.stringify({ ...schedule, value: scheduleValue }),
+      )
     }
   }
 
   useEffect(() => {
     if (!isEditing) {
-      localStorage.setItem(dayjs().format('DDMMYY'), JSON.stringify(schedule))
+      localStorage.setItem(
+        dayjs().format('YYMMDD'),
+        JSON.stringify({ ...schedule, value: scheduleValue }),
+      )
     }
-  }, [isEditing, schedule])
+  }, [isEditing, schedule, scheduleValue])
 
   return (
     <Box className='flex gap-sm'>
@@ -58,7 +62,7 @@ export default function ScheduleList({
       {!isEditing ? (
         <Input
           autoFocus
-          value={scheduleName}
+          value={scheduleValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyEnter}
           className={`w-4/5 text-size-text-sm align-center text-clover-${scheduleColor}`}
@@ -68,7 +72,7 @@ export default function ScheduleList({
         <Typography
           className={`w-4/5 text-size-text-sm flex items-center text-clover-${scheduleColor}`}
         >
-          {scheduleName}
+          {scheduleValue}
         </Typography>
       )}
     </Box>

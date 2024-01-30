@@ -5,20 +5,9 @@ import { ClickAwayListener } from '@mui/base'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { ScheduleList } from '@/components/schedule'
 import dayjs from 'dayjs'
+import { ColorType, ScheduleType } from '@/types'
 
-interface ScheduleProps {
-  color: string
-}
-
-interface ScheduleItem {
-  id: number
-  title: string
-}
-
-export default function Schedule({ color }: ScheduleProps) {
-  const value =
-    color === 'yellow' ? 2 : color === 'skyblue' ? 3 : color === 'green' ? 4 : 1
-
+export default function Schedule({ color, id }: ColorType & { id: number }) {
   let colorName = 'primary'
   switch (color) {
     case 'yellow':
@@ -35,9 +24,9 @@ export default function Schedule({ color }: ScheduleProps) {
   }
 
   const [open, setOpen] = useState(false)
-  const [scheduleTitle, setScheduleTitle] = useState(`Schedule ${value}`)
+  const [scheduleTitle, setScheduleTitle] = useState(`Schedule ${id}`)
   const [isEditing, setIsEditing] = useState(false)
-  const [schedules, setSchedules] = useState<ScheduleItem[]>([])
+  const [schedules, setSchedules] = useState<ScheduleType[]>([])
 
   const handleClick = () => {
     setOpen((_) => !_)
@@ -54,12 +43,21 @@ export default function Schedule({ color }: ScheduleProps) {
 
   const handleSave = () => {
     setIsEditing(false)
+
+    const newSchedule: ScheduleType = {
+      id: schedules.length + 1,
+      title: scheduleTitle,
+      value: '',
+      isDone: false,
+    }
+
+    const updatedSchedules = [...schedules, newSchedule]
+
+    setSchedules(updatedSchedules)
+
     localStorage.setItem(
-      dayjs().format('DDMMYY'),
-      JSON.stringify([
-        ...schedules,
-        { id: schedules.length + 1, title: scheduleTitle },
-      ]),
+      dayjs().format('YYMMDD'),
+      JSON.stringify(updatedSchedules),
     )
   }
 
@@ -83,16 +81,26 @@ export default function Schedule({ color }: ScheduleProps) {
   }
 
   const addSchedule = () => {
-    const newId = schedules.length + 1
-    const newSchedule = { id: newId, title: `Schedule ${newId}` }
-    setSchedules((prev) => [...prev, newSchedule])
+    // const newId = schedules.length + 1
+    const newSchedule: ScheduleType = {
+      id,
+      title: `Schedule ${id}`,
+      value: '',
+      isDone: false,
+    }
+
+    const updatedSchedules = [...schedules, newSchedule]
+
+    setSchedules(updatedSchedules)
+
     localStorage.setItem(
-      dayjs().format('DDMMYY'),
-      JSON.stringify([...schedules, newSchedule]),
+      dayjs().format('YYMMDD'),
+      JSON.stringify(updatedSchedules),
     )
   }
+
   useEffect(() => {
-    const storedSchedules = localStorage.getItem(dayjs().format('DDMMYY'))
+    const storedSchedules = localStorage.getItem(dayjs().format('YYMMDD'))
     if (storedSchedules) {
       setSchedules(JSON.parse(storedSchedules))
     }
@@ -102,7 +110,7 @@ export default function Schedule({ color }: ScheduleProps) {
     if (!isEditing) {
       handleSave()
     }
-  }, [isEditing, open, schedules])
+  }, [isEditing, open])
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -150,7 +158,7 @@ export default function Schedule({ color }: ScheduleProps) {
           </Box>
         </Box>
         <Box className='flex flex-col gap-2'>
-          {schedules.map((schedule) => (
+          {schedules.map((schedule, id) => (
             <ScheduleList
               key={schedule.id}
               scheduleColor={color}
