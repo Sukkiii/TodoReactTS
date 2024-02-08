@@ -5,9 +5,14 @@ import { ClickAwayListener } from '@mui/base'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { ScheduleList } from '@/components/schedule'
 import dayjs from 'dayjs'
-import { ColorType, ScheduleType } from '@/types'
+import { ScheduleType } from '@/types'
 
-export default function Schedule({ color, id }: ColorType & { id: number }) {
+interface ScheduleProps {
+  color: string
+  id: number
+}
+
+export default function Schedule({ color, id }: ScheduleProps) {
   let colorName = 'primary'
   switch (color) {
     case 'yellow':
@@ -158,7 +163,7 @@ export default function Schedule({ color, id }: ColorType & { id: number }) {
           </Box>
         </Box>
         <Box className='flex flex-col gap-2'>
-          {schedules.map((schedule, id) => (
+          {schedules.map((schedule) => (
             <ScheduleList
               key={schedule.id}
               scheduleColor={color}
