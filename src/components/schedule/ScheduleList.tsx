@@ -61,7 +61,6 @@ export default function ScheduleList({
       <Clovers colors={[scheduleColor]} />
       {!isEditing ? (
         <Input
-          autoFocus
           value={scheduleValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyEnter}
