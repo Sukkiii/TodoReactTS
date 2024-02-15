@@ -22,6 +22,15 @@ export default function Calendar() {
     setCurrentMonth(currentMonth.add(1, 'month'))
   }
 
+  const isToday = (date: dayjs.Dayjs) => {
+    const today = dayjs()
+    return (
+      today.date() === date.date() &&
+      today.month() === date.month() &&
+      today.year() === date.year()
+    )
+  }
+
   const generateCalendarDays = () => {
     const daysArray = []
     let currentDay = 1
@@ -33,8 +42,20 @@ export default function Calendar() {
         if ((i === 0 && j < startDayOfWeek) || currentDay > daysInMonth) {
           week.push(<Box key={`empty-${j}`} className='calendar-day'></Box>)
         } else {
+          const today = dayjs()
+            .date(currentDay)
+            .month(currentMonth.month())
+            .year(currentMonth.year())
+          const classNames = [
+            'calendar-day',
+            'text-sub-hover-color',
+            'cursor-pointer',
+          ]
+          if (isToday(today)) {
+            classNames.push('text-pink-500 font-extrabold')
+          }
           week.push(
-            <Box key={currentDay} className='calendar-day text-sub-hover-color'>
+            <Box key={currentDay} className={classNames.join(' ')}>
               {currentDay}
             </Box>,
           )
