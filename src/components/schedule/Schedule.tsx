@@ -86,9 +86,8 @@ export default function Schedule({ color, id }: ScheduleProps) {
   }
 
   const addSchedule = () => {
-    // const newId = schedules.length + 1
     const newSchedule: ScheduleType = {
-      id,
+      id: schedules.length + 1,
       title: `Schedule ${id}`,
       value: '',
       isDone: false,

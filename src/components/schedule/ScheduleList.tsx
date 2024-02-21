@@ -40,10 +40,6 @@ export default function ScheduleList({
   const handleKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleEdit()
-      localStorage.setItem(
-        dayjs().format('YYMMDD'),
-        JSON.stringify({ ...schedule, value: scheduleValue }),
-      )
     }
   }
 
